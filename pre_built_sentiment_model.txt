@@ -1,0 +1,37 @@
+Einstein Language - Community Sentiment Model
+
+- requires valid JWT token
+
+- 3 classes: positive, negative, neutral
+
+- data from multiple sources: social media, chatter, review/feedback forum, etc.
+
+- text, 1 or sentences
+
+- cURL command sends a text string, returns prediction from model
+
+- pass in CommunitySentiment modelId (instead of own modelId)
+
+---- the cURL command ----
+
+curl -X POST -H "Authorization: Bearer <TOKEN>" -H "Cache-Control: no-cache" -H "Content-Type: multipart/form-data" -F "modelId=CommunitySentiment" -F "document=the presentation was great and I learned a lot"  https://api.einstein.ai/v2/language/sentiment
+
+---- the JSON returned ----
+
+{
+  "probabilities": [
+    {
+      "probability": 0.9435403,
+      "label": "positive"
+    },
+    {
+      "probability": 0.031840604,
+      "label": "negative"
+    },
+    {
+      "probability": 0.02461909,
+      "label": "neutral"
+    }
+  ],
+  "object": "predictresponse"
+}
